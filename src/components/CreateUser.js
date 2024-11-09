@@ -1,7 +1,7 @@
 // src/components/CreateUser.js
 import React, { useState } from 'react';
 import { fetchAccessToken, createUser } from '../apiClient';
-import '../CreateUser.css';
+import '../CSS/CreateUser.css';
 
 const CreateUser = () => {
     const [userData, setUserData] = useState({
