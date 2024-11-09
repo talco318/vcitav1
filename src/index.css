@@ -43,9 +43,14 @@ th {
 
 .authorize-button {
   background-color: #61dafb;
-  color: white;
+  color: black;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
 }
+
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
