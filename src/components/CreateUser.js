@@ -32,9 +32,9 @@ const CreateUser = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const code = 'your_authorization_code';
-            const clientId = 'your_client_id';
-            const clientSecret = 'your_client_secret';
+            const code = '<CODE>';
+            const clientId = 'bcbaf8cd30eea62d65a24812529c214b3f32ad29cf0ad1fb9de1680d30ad6aca';
+            const clientSecret = 'ffa0326272bb49d447b5b77168b6e3ffc81fc34abbc6fe08f9c0ea0ea2c58c34';
 
             const tokenData = await fetchAccessToken(code, clientId, clientSecret);
             const accessToken = tokenData.access_token;
