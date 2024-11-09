@@ -1,3 +1,5 @@
+import {TOKEN_URL} from "./constants";
+
 export const fetchAccessToken = async (code, clientId, clientSecret) => {
     const options = {
         method: 'POST',
@@ -14,7 +16,7 @@ export const fetchAccessToken = async (code, clientId, clientSecret) => {
         })
     };
 
-    const response = await fetch('https://api.vcita.biz/oauth/token', options);
+    const response = await fetch(TOKEN_URL, options);
     if (!response.ok) {
         throw new Error('Failed to fetch access token');
     }

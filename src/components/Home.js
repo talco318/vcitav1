@@ -2,11 +2,11 @@
 // src/components/Home.js
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import {AUTHORIZATION_URL}  from "../constants";
 
-const Home = ({ clientId }) => {
+const Home = () => {
     const location = useLocation();
     const error = location.state?.error;
-    const redirect_uri = 'https://vcita-playground.web.app/oauth';
 
     return (
         <div className="home-container">
@@ -21,7 +21,7 @@ const Home = ({ clientId }) => {
             )}
             <div>
             <Link
-                to={`https://app.vcita.com/app/oauth/authorize?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code`}
+                to={AUTHORIZATION_URL}
                 className="authorize-button"
             >
                 Authorize
