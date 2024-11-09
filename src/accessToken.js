@@ -1,5 +1,3 @@
-import fetchAccessToken from './accessToken';
-
 
 const fetchAccessToken = async (code, clientId, clientSecret) => {
     const options = {
