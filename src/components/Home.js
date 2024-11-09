@@ -6,8 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 const Home = ({ clientId }) => {
     const location = useLocation();
     const error = location.state?.error;
-
-    const authUrl = `https://app.vcita.com/app/oauth/authorize?client_id=${clientId}&redirect_uri=https://vcita-playground.web.app/oauth&state=code`;
+    const redirect_uri = 'https://vcita-playground.web.app/oauth';
 
     return (
         <div className="home-container">
@@ -22,7 +21,7 @@ const Home = ({ clientId }) => {
             )}
             <div>
             <Link
-                to={`https://app.vcita.com/app/oauth/authorize?client_id=${clientId}&redirect_uri=${authUrl}`}
+                to={`https://app.vcita.com/app/oauth/authorize?client_id=${clientId}&redirect_uri=${redirect_uri}&response_type=code`}
                 className="authorize-button"
             >
                 Authorize
