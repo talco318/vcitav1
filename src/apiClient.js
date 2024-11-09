@@ -1,4 +1,4 @@
-const fetchAccessToken = async (code, clientId, clientSecret) => {
+export const fetchAccessToken = async (code, clientId, clientSecret) => {
     const options = {
         method: 'POST',
         headers: {
@@ -14,34 +14,43 @@ const fetchAccessToken = async (code, clientId, clientSecret) => {
         })
     };
 
-    try {
-        const response = await fetch('https://api.vcita.biz/oauth/token', options);
-        const data = await response.json();
-        return data; // This will contain the access token and other details
-    } catch (error) {
-        console.error('Error fetching access token:', error);
-        throw error; // Re-throw the error for handling in the main component
+    const response = await fetch('https://api.vcita.biz/oauth/token', options);
+    if (!response.ok) {
+        throw new Error('Failed to fetch access token');
     }
+    return response.json();
 };
 
-const fetchClients = async (accessToken) => {
+export const fetchClients = async (accessToken) => {
     const options = {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            'Authorization': `Bearer ${accessToken}`
+            Authorization: `Bearer ${accessToken}`
         }
     };
 
-    try {
-        const response = await fetch('https://api.vcita.biz/clients', options);
-        const data = await response.json();
-        return data; // This will contain the client data
-    } catch (error) {
-        console.error('Error fetching clients:', error);
-        throw error;
+    const response = await fetch('https://api.vcita.biz/platform/v1/clients', options);
+    if (!response.ok) {
+        throw new Error('Failed to fetch clients');
     }
+    return response.json();
 };
 
-// Export both functions as named exports
-export { fetchAccessToken, fetchClients };
+export const createUser = async (userData, accessToken) => {
+    const options = {
+        method: 'POST',
+        headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            Authorization: `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(userData)
+    };
+
+    const response = await fetch('https://api.vcita.biz/platform/v1/clients', options);
+    if (!response.ok) {
+        throw new Error('Failed to create user');
+    }
+    return response.json();
+};
